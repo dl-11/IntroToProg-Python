@@ -99,8 +99,6 @@ while True:
                 csv_data = f'{row["First_Name"]},{row["Last_Name"]},{row["Course"]}\n'
                 file.write(csv_data)
             file.close()
-        except Exception as e:
-            print(e)
             print("The following data was saved to file!")
             for row in students:
                 print(f"{row['First_Name']} {row['Last_Name']} is registered for {row['Course']}")
@@ -108,6 +106,9 @@ while True:
             print(errortext)
         except Exception as errortext:
             print(errortext)
+        finally:
+            if file:
+                file.close()
         continue
 
     # Stop the loop
